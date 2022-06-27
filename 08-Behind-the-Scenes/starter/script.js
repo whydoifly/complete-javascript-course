@@ -24,3 +24,20 @@ function calcAge(birthYear) {
 
 const firstName = 'Arkadii';
 calcAge(1996);
+
+console.log(me)
+console.log(job)
+console.log(year)
+
+var me = 'Arkadii';
+let job = 'programmer';
+const year = 1996;
+function addDec(a, b) {
+    return a + b;
+}
+
+const addExpr = function (a, b) {
+    return a + b;
+}
+
+const addArrow = (a, b) => a + b;
