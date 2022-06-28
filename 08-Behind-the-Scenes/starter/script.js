@@ -67,3 +67,19 @@
 // matilda.calcAge = arkadii.calcAge;
 // console.log(matilda);
 // matilda.calcAge();
+
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+};
+
+const merriedJessica = jessica;
+merriedJessica.lastName = 'Davis';
+
+console.log('before marriage:', jessica);
+console.log('after marriage:', merriedJessica);
