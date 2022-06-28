@@ -45,25 +45,25 @@
 
 // This keyword
 
-const calcAge = function(birthYear) {
-    console.log(2037 - birthYear);
-    console.log(this);
-}
-calcAge(1996);
+// const calcAge = function(birthYear) {
+//     console.log(2037 - birthYear);
+//     console.log(this);
+// }
+// calcAge(1996);
 
-const arkadii = {
-    year: 1996,
-    calcAge: function () {
-        console.log(2022 - this.year);
-    }
-}
+// const arkadii = {
+//     year: 1996,
+//     calcAge: function () {
+//         console.log(2022 - this.year);
+//     }
+// }
 
-arkadii.calcAge();
+// arkadii.calcAge();
 
-const matilda = {
-    year: 2017
-}
+// const matilda = {
+//     year: 2017
+// }
 
-matilda.calcAge = arkadii.calcAge;
-console.log(matilda);
-matilda.calcAge();
+// matilda.calcAge = arkadii.calcAge;
+// console.log(matilda);
+// matilda.calcAge();
