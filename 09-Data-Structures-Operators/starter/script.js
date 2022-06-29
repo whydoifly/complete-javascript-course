@@ -24,6 +24,11 @@ const restaurant = {
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -52,9 +57,50 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+// Spread Operator
+
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+
+console.log(newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+// Join 2 arrays
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Arkadii';
+const letters = [...str, 'C'];
+console.log(letters);
+
+// Real-world example
+
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt('Ingredient 2?'),
+//   prompt('Ingredient 3?'),
+// ];
+
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
+
+// Spread operator with objects
+
+const newRestaurant = { foundedIn: 1877, ...restaurant, founder: 'Juseppe Garibaldi' };
+console.log(newRestaurant);
+
 // Destructuring objects
 
-const { name, openingHours, categories } = restaurant;
+// const { name, openingHours, categories } = restaurant;
 // console.log(name, openingHours, categories);
 
 // const {
@@ -79,10 +125,10 @@ const { name, openingHours, categories } = restaurant;
 
 // Nested objects
 
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
 
 // Destructuring arrays
 
