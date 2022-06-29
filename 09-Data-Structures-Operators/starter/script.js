@@ -11,10 +11,19 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
   openingHours: {
     thu: {
       open: 12,
@@ -31,12 +40,58 @@ const restaurant = {
   },
 };
 
-const arr = [1, 2, 3];
-const [a, b, c] = arr;
-console.log(a, b, c);
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via Del Sole 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
+restaurant.orderDelivery({
+  address: 'Via Del Sole 21',
+  starterIndex: 2,
+});
+
+// Destructuring objects
+
+const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// Default values
+
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
+
+// Mutating variables
+// let a = 111;
+
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+// console.log(a, b);
+
+// Nested objects
+
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
+
+// Destructuring arrays
+
+// const arr = [1, 2, 3];
+// const [a, b, c] = arr;
+// console.log(a, b, c);
+
+// let [main, , secondary] = restaurant.categories;
+// console.log(main, secondary);
 
 // Switching variables
 // const temp = main;
@@ -44,20 +99,18 @@ console.log(main, secondary);
 // secondary = temp;
 // console.log(main, secondary);
 
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
+// [main, secondary] = [secondary, main];
+// console.log(main, secondary);
 
+// const [starter, mainCourse] = restaurant.order(2, 0);
+// console.log(starter, mainCourse);
 
+// const nested = [2, 4, [5, 6]];
+// // const [i, , j] = nested;
+// // console.log(i, j);
 
-const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
+// const [i, , [j, k]] = nested;
+// console.log(j, k);
 
-const nested = [2, 4, [5, 6]];
-// const [i, , j] = nested;
-// console.log(i, j);
-
-const [i, , [j, k]] = nested;
-console.log(j, k);
-
-const [p, q, r] = [8, 9];
-console.log(p, q, r);
+// const [p, q, r] = [8, 9];
+// console.log(p, q, r);
