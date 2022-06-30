@@ -61,6 +61,13 @@ console.log(guests1);
 const guests2 = restaurant.numGuests || 10;
 console.log(guests2);
 
+// Nulish Coalescing Operator
+
+// Nilush values: null and undefined
+
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
 /////////////////////////////////
 // Rest pattern and parameters //
 /////////////////////////////////
