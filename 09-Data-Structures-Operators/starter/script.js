@@ -30,12 +30,7 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = '20:00',
-    address,
-  }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(
       `Order recieved! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
@@ -52,15 +47,31 @@ const restaurant = {
   // ES6 enhanced object literals
   openingHours,
 };
+
+///////////////////////
+// Optional Chaining //
+///////////////////////
+console.log(restaurant.openingHours.mon?.open);
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open;
+  console.log(`On ${day} we open at ${open}`);
+}
+
+// Methods for optional chaining
+console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+
 /////////////////
 // For-Of Loop //
 /////////////////
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-for (const item of menu) console.log(item);
-for (const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`);
-}
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for (const item of menu) console.log(item);
+// for (const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
 
 //////////////////////
 // Short Circuiting //
