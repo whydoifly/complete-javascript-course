@@ -48,20 +48,45 @@ const restaurant = {
   openingHours,
 };
 
+//////////////////// 
+// Looping Object //
+////////////////////
+const properties = Object.keys(openingHours);
+console.log(properties);
+let openStr = `We are open on ${properties.length} days: `
+
+for (const day of Object.keys(openingHours)) {
+  openStr += `${day}, `
+}
+
+console.log(openStr);
+
+// Property Values
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entiry object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, {open, close}] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
 ///////////////////////
 // Optional Chaining //
 ///////////////////////
-console.log(restaurant.openingHours.mon?.open);
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-for (const day of days) {
-  console.log(day);
-  const open = restaurant.openingHours[day]?.open;
-  console.log(`On ${day} we open at ${open}`);
-}
+// console.log(restaurant.openingHours.mon?.open);
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of days) {
+//   console.log(day);
+//   const open = restaurant.openingHours[day]?.open;
+//   console.log(`On ${day} we open at ${open}`);
+// }
 
-// Methods for optional chaining
-console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
-console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
+// // Methods for optional chaining
+// console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+// console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist');
 
 /////////////////
 // For-Of Loop //
