@@ -1,5 +1,35 @@
 'use strict';
 
+////////////////////////////////////////////
+// Functions Accepting Callback Functions //
+////////////////////////////////////////////
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
+
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
+
+// // Higher-order function
+// const transformer = function (str, fnc) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fnc(str)}`);
+//   console.log(`Transformed by: ${fnc.name}`);
+// };
+
+// transformer('Javascript is the best!', upperFirstWord);
+// transformer('Javascript is the best!', oneWord);
+
+// // JS uses callback all the time
+// const high5 = function () {
+//   console.log('High five');
+// };
+
+// document.body.addEventListener('click', high5);
+// ['Arkadii', 'Jonas', 'Martha'].forEach(high5);
+
 /////////////////////////////////////////////////////
 // How Passing Arguments Works: Value vs Reference //
 /////////////////////////////////////////////////////
@@ -28,12 +58,12 @@
 // const flightNum = flight;
 // const passenger = arkadii;
 
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 1000000000000);
-};
+// const newPassport = function (person) {
+//   person.passport = Math.trunc(Math.random() * 1000000000000);
+// };
 
-newPassport(arkadii);
-checkIn(flight, arkadii);
+// newPassport(arkadii);
+// checkIn(flight, arkadii);
 
 /////////////////////////
 // Default Paramteters //
