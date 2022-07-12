@@ -1,5 +1,79 @@
 'use strict';
 
+////////////////////////////////
+// The Call and Apply Methods //
+////////////////////////////////
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function () {} - old syntax
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Arkadii Cheprasov');
+lufthansa.book(666, 'John Smith');
+console.log(lufthansa);
+
+const eurowings = {
+  name: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+// Call Method
+const book = lufthansa.book;
+// Does not work
+// book(23, 'Sarah Williams');
+book.call(eurowings, 23, 'Sarah Williams');
+book.call(lufthansa, 239, 'Mary Cooper');
+
+const swiss = {
+  name: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 539, 'Mary Cooper');
+console.log(swiss);
+
+// Apply Method
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
+
+///////////////////////////////////
+// Functions Returning Functions //
+///////////////////////////////////
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet('Hey');
+// greeterHey('Arkadii');
+// greeterHey('Jonas');
+
+// greet('Hello')('Arkadii');
+
+// const greet2 = greeting => {
+//   return name => {
+//     console.log(`${greeting} ${name}`);
+//   };
+// }; // Yes but:
+// const greetGenius = greeting => name => console.log(`${greeting} ${name}`);
+
+// greet2('Hey')('Arkadii2');
+// greetGenius('Hey')('Arkadii23');
+
 ////////////////////////////////////////////
 // Functions Accepting Callback Functions //
 ////////////////////////////////////////////
