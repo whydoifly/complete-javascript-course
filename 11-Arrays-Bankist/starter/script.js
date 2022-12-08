@@ -89,7 +89,7 @@ displayMovements(account1.movements)
 //   ['GBP', 'Pound sterling'],
 // ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 // let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -127,7 +127,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(arr.slice(-1)[0]);
 // console.log(arr.at(-1));
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // for (const [i, movement] of movements.entries()) {
 //   if (movement > 0) {
@@ -163,6 +163,24 @@ const currencies = new Map([
 //   console.log(`${value}: ${value}`);
 // })
 
+// Map Method
+// const euroToUsd = 1.1;
+// const movementsUsd = movements.map(mov => mov * euroToUsd);
+
+// console.log(movements);
+// console.log(movementsUsd);
+
+// const movementsUsdFor = [];
+// for (const mov of movements) movementsUsdFor.push(mov * euroToUsd);
+// console.log(movementsUsdFor);
+
+// const movementsDescriptions = movements.map((mov, i) => {
+//   return `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+// });
+
+// console.log(movementsDescriptions);
+
+
 ///////////////////////////////////////
 // Coding Challenge #1
 
@@ -184,14 +202,14 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-function checkDogs(dogsJulia, dogsKate) {
-  const arrJulia = dogsJulia.slice(1, -2);
-  const arrAll = arrJulia.concat(dogsKate);
-  arrAll.forEach((age, index) => {
-    console.log(age < 3 ? `Dog number ${index + 1} is stil a puppy 🐶` : `Dog number ${index + 1} is an adult, and is ${age} years old`);
-  })
-}
+// function checkDogs(dogsJulia, dogsKate) {
+//   const arrJulia = dogsJulia.slice(1, -2);
+//   const arrAll = arrJulia.concat(dogsKate);
+//   arrAll.forEach((age, index) => {
+//     console.log(age < 3 ? `Dog number ${index + 1} is stil a puppy 🐶` : `Dog number ${index + 1} is an adult, and is ${age} years old`);
+//   })
+// }
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-console.log('----------')
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// console.log('----------')
+// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
