@@ -275,6 +275,13 @@ const currencies = new Map([
 //   .reduce((acc, mov) => acc + mov, 0);
 // console.log(totalDepositsUSD);
 
+// Find Method
+// const firstWithdrawal = movements.find(mov => mov < 0);
+// console.log(movements, firstWithdrawal);
+
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(account);
+
 ///////////////////////////////////////
 // Coding Challenge #1
 
