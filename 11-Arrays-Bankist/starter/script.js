@@ -116,7 +116,7 @@ const createUserNames = function (accs) {
 };
 createUserNames(accounts);
 
-const updateUI = function(acc) {
+const updateUI = function (acc) {
   // Display movements
   displayMovements(acc.movements);
 
@@ -125,7 +125,7 @@ const updateUI = function(acc) {
 
   // Display summary
   calcDisplaySummary(acc);
-}
+};
 
 // Events Handlers
 let currentAccount;
@@ -175,6 +175,26 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    console.log(index);
+
+    // Delete account
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
 });
 
 /////////////////////////////////////////////////
