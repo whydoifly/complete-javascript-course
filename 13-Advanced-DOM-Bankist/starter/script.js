@@ -42,7 +42,7 @@ message.classList.add('cookie-message');
 message.innerHTML =
   'We use cookies to improve functionality and analytics. <button class="btn btn--close-cookie">Got it</button>';
 
-header.prepend(message);
+header.append(message);
 // header.append(message.cloneNode(true));
 
 // Deleting elements
@@ -51,3 +51,16 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt, logo.src)
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
