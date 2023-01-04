@@ -55,12 +55,36 @@ document
 // Styles
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
-message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
 document.documentElement.style.setProperty('--color-primary', 'orangered');
 
 // Attributes
 const logo = document.querySelector('.nav__logo');
-console.log(logo.alt, logo.src)
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// console.log(logo.alt, logo.src);
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
+
+// Implementing Smooth Scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // More Modern Way
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
