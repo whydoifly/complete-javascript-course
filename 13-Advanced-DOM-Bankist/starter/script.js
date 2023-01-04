@@ -88,3 +88,15 @@ btnScrollTo.addEventListener('click', function (e) {
   // More Modern Way
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading!');
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading!');
+// };
