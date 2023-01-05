@@ -101,8 +101,7 @@ const logo = document.querySelector('.nav__logo');
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function(e) {
-
+document.querySelector('.nav__links').addEventListener('click', function (e) {
   // Mathing strategy
   if (e.target.classList.contains('nav__link')) {
     e.preventDefault();
@@ -111,7 +110,7 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
   }
 });
 
-// const h1 = document.querySelector('h1');
+const h1 = document.querySelector('h1');
 
 // const alertH1 = function (e) {
 //   alert('addEventListener: Great! You are reading the heading!');
@@ -147,4 +146,21 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 //   console.log('NAV', e.target, e.currentTarget);
 // });
 
-// Event Delegation: Implementing Page Navigation
+// DOM Travering
+
+// Going downwards: child
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'orange';
+
+// // Going upwards: parent
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+// // Going sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
