@@ -1,68 +1,68 @@
 'use strict';
 
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+// const Person = function (firstName, birthYear) {
+//   // Instance properties
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
 
-  // Never do this
-  //   this.calcAge = function () {
-  //     console.log(2037 - this.birthYear);
-  //   };
-};
+//   // Never do this
+//   //   this.calcAge = function () {
+//   //     console.log(2037 - this.birthYear);
+//   //   };
+// };
 
-const jonas = new Person('Jonas', 1991);
-console.log(jonas);
-const matilda = new Person('Matilda', 2017);
-const jack = new Person('Jack', 1975);
-console.log(matilda, jack);
+// const jonas = new Person('Jonas', 1991);
+// console.log(jonas);
+// const matilda = new Person('Matilda', 2017);
+// const jack = new Person('Jack', 1975);
+// console.log(matilda, jack);
 
-console.log(jonas instanceof Person);
+// console.log(jonas instanceof Person);
 
-// Prototypes
-console.log(Person.prototype);
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
+// // Prototypes
+// console.log(Person.prototype);
+// Person.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
 
-jonas.calcAge();
-matilda.calcAge();
+// jonas.calcAge();
+// matilda.calcAge();
 
-console.log(jonas.__proto__ === Person.prototype);
+// console.log(jonas.__proto__ === Person.prototype);
 
-console.log(Person.prototype.isPrototypeOf(jonas));
-console.log(Person.prototype.isPrototypeOf(matilda));
-console.log(Person.prototype.isPrototypeOf(Person));
+// console.log(Person.prototype.isPrototypeOf(jonas));
+// console.log(Person.prototype.isPrototypeOf(matilda));
+// console.log(Person.prototype.isPrototypeOf(Person));
 
-// .prototypeOfLinkedObjects
+// // .prototypeOfLinkedObjects
 
-Person.prototype.species = 'Homo Sapiens';
-console.log(jonas.species, matilda.species);
+// Person.prototype.species = 'Homo Sapiens';
+// console.log(jonas.species, matilda.species);
 
-console.log(jonas.hasOwnProperty('firstName'));
-console.log(jonas.hasOwnProperty('species'));
+// console.log(jonas.hasOwnProperty('firstName'));
+// console.log(jonas.hasOwnProperty('species'));
 
-console.log(jonas.__proto__);
-// Object.prototype (top of prototype chain)
-console.log(jonas.__proto__.__proto__);
-console.log(jonas.__proto__.__proto__.__proto__);
+// console.log(jonas.__proto__);
+// // Object.prototype (top of prototype chain)
+// console.log(jonas.__proto__.__proto__);
+// console.log(jonas.__proto__.__proto__.__proto__);
 
-console.dir(Person.prototype.constructor);
+// console.dir(Person.prototype.constructor);
 
-const arr = [3, 6, 4, 5, 6, 9, 9]; // new Array === []
-console.log(arr.__proto__);
-console.log(arr.__proto__ === Array.prototype);
+// const arr = [3, 6, 4, 5, 6, 9, 9]; // new Array === []
+// console.log(arr.__proto__);
+// console.log(arr.__proto__ === Array.prototype);
 
-console.log(arr.__proto__.__proto__);
+// console.log(arr.__proto__.__proto__);
 
-Array.prototype.unique = function () {
-  return [...new Set(this)];
-};
+// Array.prototype.unique = function () {
+//   return [...new Set(this)];
+// };
 
-console.log(arr.unique());
+// console.log(arr.unique());
 
-const h1 = document.querySelector('h1');
-console.dir(x => x + 1);
+// const h1 = document.querySelector('h1');
+// console.dir(x => x + 1);
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -79,37 +79,71 @@ DATA CAR 2: 'Mercedes' going at 95 km/h
 GOOD LUCK 😀
 */
 
-// Task 1
-const Car = function (make, speed) {
-    this.make = make;
-    this.speed = speed;
+// // Task 1
+// const Car = function (make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+// }
+
+// // Task 2
+// Car.prototype.accelarate = function () {
+//     this.speed += 10;
+//     console.log(`${this.make} going at ${this.speed} km/h`);
+// }
+
+// // Task 3
+// Car.prototype.brake = function () {
+//     this.speed -= 5;
+//     console.log(`${this.make} going at ${this.speed} km/h`);
+// }
+
+// // Task 4
+// const bmw = new Car('BMW', 120);
+// const mercedes = new Car('Mercedes', 95);
+// bmw.accelarate();
+// bmw.accelarate();
+// bmw.brake();
+// bmw.brake();
+
+// mercedes.accelarate();
+// mercedes.accelarate();
+// mercedes.brake();
+// mercedes.accelarate();
+// mercedes.accelarate();
+// mercedes.accelarate();
+// mercedes.accelarate();
+// mercedes.accelarate();
+
+// ES6 Classes
+
+// class expression
+// const PersonCl = class {};
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+    greet() {
+    console.log(`Hey ${this.firstName}`);
+    }
 }
 
-// Task 2
-Car.prototype.accelarate = function () {
-    this.speed += 10;
-    console.log(`${this.make} going at ${this.speed} km/h`);
-}
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
 
-// Task 3
-Car.prototype.brake = function () {
-    this.speed -= 5;
-    console.log(`${this.make} going at ${this.speed} km/h`);
-}
+console.log(jessica.__proto__ === PersonCl.prototype);
 
-// Task 4
-const bmw = new Car('BMW', 120);
-const mercedes = new Car('Mercedes', 95);
-bmw.accelarate();
-bmw.accelarate();
-bmw.brake();
-bmw.brake();
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// }
 
-mercedes.accelarate();
-mercedes.accelarate();
-mercedes.brake();
-mercedes.accelarate();
-mercedes.accelarate();
-mercedes.accelarate();
-mercedes.accelarate();
-mercedes.accelarate();
+jessica.greet();
