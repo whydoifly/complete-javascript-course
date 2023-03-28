@@ -120,146 +120,183 @@ GOOD LUCK 😀
 // const PersonCl = class {};
 
 // class declaration
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
-    this.birthYear = birthYear;
-  }
+// class PersonCl {
+//   constructor(fullName, birthYear) {
+//     this.fullName = fullName;
+//     this.birthYear = birthYear;
+//   }
 
-  // Instance methods
-  // Methods will be added to .prototype property
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
+//   // Instance methods
+//   // Methods will be added to .prototype property
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
 
-  greet() {
-    console.log(`Hey ${this.firstName}`);
-  }
+//   greet() {
+//     console.log(`Hey ${this.firstName}`);
+//   }
 
-  get age() {
-    return 2037 - this.birthYear;
-  }
+//   get age() {
+//     return 2037 - this.birthYear;
+//   }
 
-  set fullName(name) {
-    console.log(name);
-    if (name.includes(' ')) this._fullName = name;
-    else alert(`${name} is not a full name!`);
-  }
+//   set fullName(name) {
+//     console.log(name);
+//     if (name.includes(' ')) this._fullName = name;
+//     else alert(`${name} is not a full name!`);
+//   }
 
-  get fullName() {
-    return this._fullName;
-  }
+//   get fullName() {
+//     return this._fullName;
+//   }
 
-  // Static method
-  static hey() {
-    console.log('Hey there 👋');
-    console.log(this);
-  }
-}
-
-const jessica = new PersonCl('Jessica Davis', 1996);
-console.log(jessica);
-jessica.calcAge();
-console.log(jessica.age);
-
-console.log(jessica.__proto__ === PersonCl.prototype);
-
-// PersonCl.prototype.greet = function () {
-//   console.log(`Hey ${this.firstName}`);
+//   // Static method
+//   static hey() {
+//     console.log('Hey there 👋');
+//     console.log(this);
+//   }
 // }
 
-jessica.greet();
+// const jessica = new PersonCl('Jessica Davis', 1996);
+// console.log(jessica);
+// jessica.calcAge();
+// console.log(jessica.age);
 
-// Getters and Setters
-const walter = new PersonCl('Walter White', 1965);
+// console.log(jessica.__proto__ === PersonCl.prototype);
 
-const account = {
-  owner: 'Jonas',
-  movements: [200, 530, 120, 300],
+// // PersonCl.prototype.greet = function () {
+// //   console.log(`Hey ${this.firstName}`);
+// // }
 
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
+// jessica.greet();
 
-  set latest(mov) {
-    this.movements.push(mov);
-  },
+// // Getters and Setters
+// const walter = new PersonCl('Walter White', 1965);
+
+// const account = {
+//   owner: 'Jonas',
+//   movements: [200, 530, 120, 300],
+
+//   get latest() {
+//     return this.movements.slice(-1).pop();
+//   },
+
+//   set latest(mov) {
+//     this.movements.push(mov);
+//   },
+// };
+
+// console.log(account.latest);
+
+// account.latest = 50;
+// console.log(account.movements);
+
+// PersonCl.hey();
+
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
+
+// const steven = Object.create(PersonProto);
+// console.log(steven);
+// steven.name = 'Steven';
+// steven.birthYear = 2002;
+// steven.calcAge();
+
+// console.log(steven.__proto__ === PersonProto);
+
+// const sarah = Object.create(PersonProto);
+// sarah.init('Sarah', 1979);
+// sarah.calcAge();
+
+// ///////////////////////////////////////
+// // Coding Challenge #2
+
+// /*
+// 1. Re-create challenge 1, but this time using an ES6 class;
+// 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
+// 3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
+// 4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.
+
+// DATA CAR 1: 'Ford' going at 120 km/h
+
+// GOOD LUCK 😀
+// */
+
+// // Task 1
+// class CarCl {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
+
+//   get speedUS() {
+//     return this.speed / 1.6;
+//   }
+
+//   set speedUS(speed) {
+//     this.speed = speed * 1.6;
+//   }
+
+//   // Task 2
+//   accelarate() {
+//     this.speed += 10;
+//     console.log(`${this.make} going at ${this.speed} km/h`);
+//   }
+
+//   // Task 3
+//   brake() {
+//     this.speed -= 5;
+//     console.log(`${this.make} going at ${this.speed} km/h`);
+//   }
+// }
+
+// const ford = new CarCl('Ford', 120);
+// ford.accelarate();
+// ford.accelarate();
+// ford.speedUs = 50;
+// ford.brake();
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
 };
 
-console.log(account.latest);
-
-account.latest = 50;
-console.log(account.movements);
-
-PersonCl.hey();
-
-const PersonProto = {
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  },
-
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
 };
 
-const steven = Object.create(PersonProto);
-console.log(steven);
-steven.name = 'Steven';
-steven.birthYear = 2002;
-steven.calcAge();
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
 
-console.log(steven.__proto__ === PersonProto);
 
-const sarah = Object.create(PersonProto);
-sarah.init('Sarah', 1979);
-sarah.calcAge();
+// Linking prototypes 
+Student.prototype = Object.create(Person.prototype);
 
-///////////////////////////////////////
-// Coding Challenge #2
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
 
-/* 
-1. Re-create challenge 1, but this time using an ES6 class;
-2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6);
-3. Add a setter called 'speedUS' which sets the current speed in mi/h (but converts it to km/h before storing the value, by multiplying the input by 1.6);
-4. Create a new car and experiment with the accelerate and brake methods, and with the getter and setter.
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.log(mike);
+mike.introduce();
+// mike.calcAge();
 
-DATA CAR 1: 'Ford' going at 120 km/h
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
 
-GOOD LUCK 😀
-*/
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
 
-// Task 1
-class CarCl {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
-
-  get speedUS() {
-    return this.speed / 1.6;
-  }
-
-  set speedUS(speed) {
-    this.speed = speed * 1.6;
-  }
-
-  // Task 2
-  accelarate() {
-    this.speed += 10;
-    console.log(`${this.make} going at ${this.speed} km/h`);
-  }
-
-  // Task 3
-  brake() {
-    this.speed -= 5;
-    console.log(`${this.make} going at ${this.speed} km/h`);
-  }
-}
-
-const ford = new CarCl('Ford', 120);
-ford.accelarate();
-ford.accelarate();
-ford.speedUs = 50;
-ford.brake();
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
