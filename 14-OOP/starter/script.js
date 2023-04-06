@@ -445,53 +445,72 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 2010, 'Computer Science');
 jay.introduce();
 
+// Public fields
+// Private fields
+// Public methods
+// Private methods
+
 class Account {
+
+  // 1) Public fields (instances)
+  locale = navigator.language;
+  
+
+  // 2) Private fields 
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin, movements) {
     this.owner = owner;
     this.currency = currency;
     // protected property
-    this._pin = pin;
-    this._movements = movements;
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this._movements = movements;
+    
 
     console.log(`Thanks for opening an account, ${owner}`);
   }
 
   // Public Interface
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   widthdraw(val) {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  // Private Methods
+
+  // #approveLoan(val) {
+  //   return true;
+  // }
+
+  _approveLoan(val) {
+    return true;
   }
 }
 
 const acc1 = new Account('Jonas', 'EUR', 1111, []);
 console.log(acc1);
 
-acc1._movements.push(250);
-acc1._movements.push(-140);
+// acc1._movements.push(250);
+// acc1._movements.push(-140);
+// acc1._approveLoan(1000);
 acc1.deposit(250);
 acc1.widthdraw(140);
 acc1.requestLoan(1000);
-acc1.approveLoan(1000);
 console.log(acc1.getMovements());
 
 console.log(acc1);
-console.log(acc1.pin);
