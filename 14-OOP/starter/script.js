@@ -478,16 +478,19 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this; // Chaining Methods
   }
 
   widthdraw(val) {
     this.deposit(-val);
+    return this; // Chaining Methods
   }
 
   requestLoan(val) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this; // Chaining Methods
     }
   }
 
@@ -514,3 +517,7 @@ acc1.requestLoan(1000);
 console.log(acc1.getMovements());
 
 console.log(acc1);
+
+// Chaining Methods
+acc1.deposit(300).deposit(500).widthdraw(35).requestLoan(25000).widthdraw(4000);
+console.log(acc1.getMovements());
